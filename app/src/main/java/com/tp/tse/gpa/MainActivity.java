@@ -31,8 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == 1) {
             if (resultCode == RESULT_OK && data.getExtras() != null) {
                 Log.d( "", "");
+                String name = data.getStringExtra("USERNAME");
+                textViewName.setText(name);
             } else {
-                ;
+                //Handle Errors
             }
         }
     }

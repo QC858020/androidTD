@@ -30,7 +30,7 @@ public class FormActivity extends AppCompatActivity {
     private void save() {
         String name = editTextName.getText().toString();
         Intent resultIntent = new Intent();
-        resultIntent.putExtra(name: "USERNAME", name);
+        resultIntent.putExtra("USERNAME", name);
         setResult(RESULT_OK,resultIntent);
         finish();
     }
