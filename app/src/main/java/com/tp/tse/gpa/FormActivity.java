@@ -17,6 +17,10 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
+        init();
+    }
+
+    private void init(){
         buttonSave = findViewById(R.id.activity_form_button);
         editTextName = findViewById(R.id.activity_form_edittext_name);
         buttonSave.setOnClickListener(new View.OnClickListener() {

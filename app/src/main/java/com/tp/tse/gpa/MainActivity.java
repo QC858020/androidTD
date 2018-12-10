@@ -18,11 +18,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
+    }
 
+    private void init(){
         textViewName  = findViewById(R.id.activity_main_textview_name);
-
         buttonNext = findViewById(R.id.activity_main_button_next);
-
         buttonNext.setOnClickListener(this);
     }
 
@@ -42,10 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_main_button_next:
-                Intent intent = new Intent(this,FormActivity.class);
-
-                startActivityForResult(intent, 1);
+                displayFormActivity();
                 break;
         }
+    }
+
+    private void displayFormActivity(){
+        Intent intent = new Intent(this,FormActivity.class);
+        startActivityForResult(intent, 1);
     }
 }
