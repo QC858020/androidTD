@@ -15,6 +15,7 @@ public class ListNameAdapter extends RecyclerView.Adapter<ListitemViewHolder> {
     public ListNameAdapter(){
         nameList = new ArrayList<>();
     }
+
     @NonNull
     @Override
     public ListitemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
