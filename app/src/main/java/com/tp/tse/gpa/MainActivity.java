@@ -72,4 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void clickOnItem(String name){
         Toast.makeText(this,name,Toast.LENGTH_SHORT).show();
     }
+
+    public void clickOnCross(String name){
+        Toast.makeText(this, "Clic sur croix de l'item : "+name,Toast.LENGTH_SHORT).show();
+    }
 }

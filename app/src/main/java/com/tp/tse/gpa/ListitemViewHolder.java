@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ListitemViewHolder extends RecyclerView.ViewHolder {
@@ -17,6 +18,14 @@ public class ListitemViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 nameItemListener.clickOnItem(name);
+            }
+        });
+
+        ImageView imageView = itemView.findViewById(R.id.item_view_image);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nameItemListener.clickOnCross(name);
             }
         });
 
