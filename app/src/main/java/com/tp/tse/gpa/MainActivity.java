@@ -21,25 +21,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         init();
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        String name = DataManager.getInstance().getName();
+        textViewName.setText(name);
+    }
+
     private void init(){
         textViewName  = findViewById(R.id.activity_main_textview_name);
         buttonNext = findViewById(R.id.activity_main_button_next);
         buttonNext.setOnClickListener(this);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK && data.getExtras() != null) {
-                Log.d( "", "");
-                String name = data.getStringExtra("USERNAME");
-                textViewName.setText(name);
-            } else {
-                //Handle Errors
-            }
-        }
-    }
-
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_main_button_next:
@@ -50,6 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void displayFormActivity(){
         Intent intent = new Intent(this,FormActivity.class);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 }
