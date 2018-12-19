@@ -11,10 +11,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, NameItemListener{
     private Button buttonNext;
     private RecyclerView recyclerView;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listNameAdapter = new ListNameAdapter();
+        listNameAdapter = new ListNameAdapter(this);
         init();
         initList();
     }
@@ -65,5 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(listNameAdapter);
+    }
+
+    @Override
+    public void clickOnItem(String name){
+        Toast.makeText(this,name,Toast.LENGTH_SHORT).show();
     }
 }

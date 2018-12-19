@@ -8,10 +8,9 @@ import android.widget.TextView;
 
 public class ListitemViewHolder extends RecyclerView.ViewHolder {
     private TextView textViewName;
-    private NameItemListener nameItemListener;
     private String name;
 
-    public ListitemViewHolder(@NonNull View itemView){
+    public ListitemViewHolder(@NonNull View itemView, final NameItemListener nameItemListener){
         super(itemView);
         CardView cardView = itemView.findViewById(R.id.item_view_card);
         cardView.setOnClickListener(new View.OnClickListener(){
