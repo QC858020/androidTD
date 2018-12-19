@@ -26,14 +26,18 @@ public class FormActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                save();
+                saveData();
             }
         });
     }
 
-    private void save() {
+    private void saveData() {
         String name = editTextName.getText().toString();
-        DataManager.getInstance().setName(name);
+
+        if (!name.isEmpty()){
+            DataManager.getInstance().addName(name);
+        }
+
         finish();
     }
 }

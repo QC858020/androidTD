@@ -5,33 +5,44 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextView textViewName;
     private Button buttonNext;
+    private RecyclerView recyclerView;
+
+    ListNameAdapter listNameAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listNameAdapter = new ListNameAdapter();
         init();
+        initList();
+    }
+
+    private void init(){
+        buttonNext = findViewById(R.id.activity_main_button_next);
+        recyclerView = findViewById(R.id.activity_main_recyclerview);
+
+        buttonNext.setOnClickListener(this);
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        String name = DataManager.getInstance().getName();
-        textViewName.setText(name);
-    }
 
-    private void init(){
-        textViewName  = findViewById(R.id.activity_main_textview_name);
-        buttonNext = findViewById(R.id.activity_main_button_next);
-        buttonNext.setOnClickListener(this);
+        List nameList = DataManager.getInstance().getNameList();
+        listNameAdapter.updateData(nameList);
     }
 
     @Override
@@ -46,5 +57,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void displayFormActivity(){
         Intent intent = new Intent(this,FormActivity.class);
         startActivity(intent);
+    }
+
+    private void initList(){
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(listNameAdapter);
     }
 }
